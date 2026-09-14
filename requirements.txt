@@ -10,3 +10,10 @@ rich==13.9.2
 pytest==8.3.3
 # pytest-cov — coverage reporting for pytest runs
 pytest-cov==6.0.0
+# FastAPI — web framework for the Load Matching Agent's browser demo UI
+fastapi==0.115.0
+# Uvicorn — ASGI server that runs the FastAPI app
+uvicorn==0.30.6
+# Jinja2 — server-side templating for the demo UI's HTML page
+jinja2==3.1.4
+

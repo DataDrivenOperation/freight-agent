@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Freight Load Matcher</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 text-slate-900 min-h-screen flex flex-col">
+
+  <header class="bg-slate-900 text-white px-6 py-4 shadow">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <h1 class="text-xl font-semibold tracking-tight">Freight Load Matcher</h1>
+      <span class="text-xs uppercase tracking-wider text-slate-400">Load Matching Agent · v1</span>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-6xl w-full mx-auto px-6 py-8">
+
+    <section class="bg-white border border-slate-200 rounded-lg shadow-sm p-5 mb-6">
+      <div class="flex flex-col sm:flex-row sm:items-end gap-4">
+        <div class="flex-1">
+          <label for="load-select" class="block text-sm font-medium text-slate-700 mb-1">
+            Load
+          </label>
+          <select
+            id="load-select"
+            class="w-full border border-slate-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-800"
+          >
+            {% for load in loads %}
+            <option value="{{ load.load_id }}">
+              {{ load.load_id }} — {{ load.origin }} → {{ load.destination }}
+              ({{ load.equipment_type }}, ${{ "{:,.0f}".format(load.rate_usd) }})
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+        <button
+          id="find-matches-btn"
+          class="bg-slate-900 hover:bg-slate-700 text-white font-semibold px-6 py-2.5 rounded-md text-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Find Matches
+        </button>
+      </div>
+    </section>
+
+    <section id="load-summary" class="hidden mb-4 text-sm text-slate-600"></section>
+
+    <section id="error-banner" class="hidden mb-4 bg-red-50 border border-red-200 text-red-700 text-sm rounded-md px-4 py-3"></section>
+
+    <section class="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+      <table class="w-full text-sm">
+        <thead class="bg-slate-50 text-slate-500 uppercase text-xs tracking-wider">
+          <tr>
+            <th class="px-4 py-3 text-left font-medium">Rank</th>
+            <th class="px-4 py-3 text-left font-medium">Truck</th>
+            <th class="px-4 py-3 text-left font-medium">Driver</th>
+            <th class="px-4 py-3 text-right font-medium">Total</th>
+            <th class="px-4 py-3 text-right font-medium">Lane</th>
+            <th class="px-4 py-3 text-right font-medium">Rate</th>
+            <th class="px-4 py-3 text-right font-medium">HOS</th>
+            <th class="px-4 py-3 text-right font-medium">Equip</th>
+            <th class="px-4 py-3 text-left font-medium">Reasoning</th>
+          </tr>
+        </thead>
+        <tbody id="results-body" class="divide-y divide-slate-100">
+          <tr>
+            <td colspan="9" class="px-4 py-10 text-center text-slate-400">
+              Pick a load and click "Find Matches" to see ranked trucks.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <footer class="bg-amber-50 border-t border-amber-200 text-amber-800 text-xs text-center py-2">
+    Demo data — not real loads
+  </footer>
+
+  <script>
+    const selectEl = document.getElementById('load-select');
+    const buttonEl = document.getElementById('find-matches-btn');
+    const bodyEl = document.getElementById('results-body');
+    const summaryEl = document.getElementById('load-summary');
+    const errorEl = document.getElementById('error-banner');
+
+    function scoreBadgeClasses(score) {
+      if (score >= 70) return 'bg-emerald-100 text-emerald-800';
+      if (score >= 40) return 'bg-amber-100 text-amber-800';
+      return 'bg-red-100 text-red-800';
+    }
+
+    function clearChildren(el) {
+      while (el.firstChild) el.removeChild(el.firstChild);
+    }
+
+    function renderEmptyRow(message) {
+      clearChildren(bodyEl);
+      const tr = document.createElement('tr');
+      const td = document.createElement('td');
+      td.colSpan = 9;
+      td.className = 'px-4 py-10 text-center text-slate-400';
+      td.textContent = message;
+      tr.appendChild(td);
+      bodyEl.appendChild(tr);
+    }
+
+    function cell(text, extraClasses) {
+      const td = document.createElement('td');
+      td.className = 'px-4 py-3 align-top ' + (extraClasses || '');
+      td.textContent = text;
+      return td;
+    }
+
+    function renderResults(data) {
+      summaryEl.textContent =
+        data.load_id + ': ' + data.origin + ' → ' + data.destination +
+        ' · ' + data.equipment_type + ' · $' +
+        Number(data.rate_usd).toLocaleString();
+      summaryEl.classList.remove('hidden');
+
+      if (data.matches.length === 0) {
+        renderEmptyRow('No compatible trucks available for this load.');
+        return;
+      }
+
+      clearChildren(bodyEl);
+      data.matches.forEach((row) => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50';
+
+        tr.appendChild(cell(String(row.rank), 'font-medium text-slate-500'));
+        tr.appendChild(cell(row.truck_id, 'font-medium'));
+        tr.appendChild(cell(row.driver));
+
+        const totalTd = document.createElement('td');
+        totalTd.className = 'px-4 py-3 text-right';
+        const badge = document.createElement('span');
+        badge.className = 'inline-block px-2 py-0.5 rounded-full text-xs font-semibold ' + scoreBadgeClasses(row.total_score);
+        badge.textContent = row.total_score;
+        totalTd.appendChild(badge);
+        tr.appendChild(totalTd);
+
+        tr.appendChild(cell(String(row.lane_fit), 'text-right tabular-nums text-slate-600'));
+        tr.appendChild(cell(String(row.rate_quality), 'text-right tabular-nums text-slate-600'));
+        tr.appendChild(cell(String(row.hos_compliance), 'text-right tabular-nums text-slate-600'));
+        tr.appendChild(cell(String(row.equipment_match), 'text-right tabular-nums text-slate-600'));
+        tr.appendChild(cell(row.reasoning, 'text-slate-600 max-w-md'));
+
+        bodyEl.appendChild(tr);
+      });
+    }
+
+    async function findMatches() {
+      const loadId = selectEl.value;
+      if (!loadId) return;
+
+      errorEl.classList.add('hidden');
+      summaryEl.classList.add('hidden');
+      buttonEl.disabled = true;
+      buttonEl.textContent = 'Matching...';
+      renderEmptyRow('Loading matches...');
+
+      try {
+        const response = await fetch('/match/' + encodeURIComponent(loadId));
+        if (!response.ok) {
+          const body = await response.json().catch(() => ({}));
+          throw new Error(body.detail || ('Request failed with status ' + response.status));
+        }
+        const data = await response.json();
+        renderResults(data);
+      } catch (err) {
+        renderEmptyRow('No results.');
+        errorEl.textContent = err.message;
+        errorEl.classList.remove('hidden');
+      } finally {
+        buttonEl.disabled = false;
+        buttonEl.textContent = 'Find Matches';
+      }
+    }
+
+    buttonEl.addEventListener('click', findMatches);
+  </script>
+
+</body>
+</html>
