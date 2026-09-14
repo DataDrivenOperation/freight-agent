@@ -1,0 +1,72 @@
+[
+  {
+    "driver_id": "DRV001",
+    "hours_driven_today": 2.0,
+    "hours_available_today": 9.0,
+    "last_rest_start": "2026-09-14T18:00:00",
+    "cycle_hours_used_8day": 35.0
+  },
+  {
+    "driver_id": "DRV002",
+    "hours_driven_today": 0.0,
+    "hours_available_today": 11.0,
+    "last_rest_start": "2026-09-14T20:00:00",
+    "cycle_hours_used_8day": 28.5
+  },
+  {
+    "driver_id": "DRV003",
+    "hours_driven_today": 4.5,
+    "hours_available_today": 6.5,
+    "last_rest_start": "2026-09-14T12:00:00",
+    "cycle_hours_used_8day": 50.0
+  },
+  {
+    "driver_id": "DRV004",
+    "hours_driven_today": 1.0,
+    "hours_available_today": 10.0,
+    "last_rest_start": "2026-09-14T19:30:00",
+    "cycle_hours_used_8day": 42.0
+  },
+  {
+    "driver_id": "DRV005",
+    "hours_driven_today": 3.0,
+    "hours_available_today": 8.0,
+    "last_rest_start": "2026-09-14T15:00:00",
+    "cycle_hours_used_8day": 60.0
+  },
+  {
+    "driver_id": "DRV006",
+    "hours_driven_today": 0.0,
+    "hours_available_today": 11.0,
+    "last_rest_start": "2026-09-14T21:00:00",
+    "cycle_hours_used_8day": 20.0
+  },
+  {
+    "driver_id": "DRV007",
+    "hours_driven_today": 10.5,
+    "hours_available_today": 0.5,
+    "last_rest_start": "2026-09-13T22:00:00",
+    "cycle_hours_used_8day": 68.0
+  },
+  {
+    "driver_id": "DRV008",
+    "hours_driven_today": 2.0,
+    "hours_available_today": 9.0,
+    "last_rest_start": "2026-09-14T17:00:00",
+    "cycle_hours_used_8day": 33.0
+  },
+  {
+    "driver_id": "DRV009",
+    "hours_driven_today": 0.0,
+    "hours_available_today": 11.0,
+    "last_rest_start": "2026-09-14T22:00:00",
+    "cycle_hours_used_8day": 15.0
+  },
+  {
+    "driver_id": "DRV010",
+    "hours_driven_today": 6.0,
+    "hours_available_today": 5.0,
+    "last_rest_start": "2026-09-14T10:00:00",
+    "cycle_hours_used_8day": 55.0
+  }
+]

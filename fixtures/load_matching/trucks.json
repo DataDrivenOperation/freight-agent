@@ -1,0 +1,92 @@
+[
+  {
+    "truck_id": "TRUCK001",
+    "current_location": "Atlanta, GA",
+    "equipment_type": "dry_van",
+    "available_date": "2026-09-15",
+    "driver_id": "DRV001",
+    "driver_name": "John Mercer",
+    "hazmat_endorsement": false
+  },
+  {
+    "truck_id": "TRUCK002",
+    "current_location": "Dallas, TX",
+    "equipment_type": "dry_van",
+    "available_date": "2026-09-15",
+    "driver_id": "DRV002",
+    "driver_name": "Maria Gonzalez",
+    "hazmat_endorsement": false
+  },
+  {
+    "truck_id": "TRUCK003",
+    "current_location": "Chicago, IL",
+    "equipment_type": "flatbed",
+    "available_date": "2026-09-16",
+    "driver_id": "DRV003",
+    "driver_name": "Tyrone Banks",
+    "hazmat_endorsement": false
+  },
+  {
+    "truck_id": "TRUCK004",
+    "current_location": "Los Angeles, CA",
+    "equipment_type": "dry_van",
+    "available_date": "2026-09-15",
+    "driver_id": "DRV004",
+    "driver_name": "Wei Chen",
+    "hazmat_endorsement": true
+  },
+  {
+    "truck_id": "TRUCK005",
+    "current_location": "Memphis, TN",
+    "equipment_type": "dry_van",
+    "available_date": "2026-09-17",
+    "driver_id": "DRV005",
+    "driver_name": "Ashley Turner",
+    "hazmat_endorsement": false
+  },
+  {
+    "truck_id": "TRUCK006",
+    "current_location": "Charlotte, NC",
+    "equipment_type": "flatbed",
+    "available_date": "2026-09-15",
+    "driver_id": "DRV006",
+    "driver_name": "Derek Owens",
+    "hazmat_endorsement": false
+  },
+  {
+    "truck_id": "TRUCK007",
+    "current_location": "Columbus, OH",
+    "equipment_type": "dry_van",
+    "available_date": "2026-09-16",
+    "driver_id": "DRV007",
+    "driver_name": "Priya Patel",
+    "hazmat_endorsement": false
+  },
+  {
+    "truck_id": "TRUCK008",
+    "current_location": "Denver, CO",
+    "equipment_type": "reefer",
+    "available_date": "2026-09-15",
+    "driver_id": "DRV008",
+    "driver_name": "Sam Whitfield",
+    "hazmat_endorsement": false
+  },
+  {
+    "truck_id": "TRUCK009",
+    "current_location": "Phoenix, AZ",
+    "equipment_type": "dry_van",
+    "available_date": "2026-09-18",
+    "driver_id": "DRV009",
+    "driver_name": "Nadia Ibrahim",
+    "hazmat_endorsement": false
+  },
+  {
+    "truck_id": "TRUCK010",
+    "current_location": "Nashville, TN",
+    "equipment_type": "flatbed",
+    "available_date": "2026-09-15",
+    "driver_id": "DRV010",
+    "driver_name": "Carlos Reyes",
+    "hazmat_endorsement": false
+  }
+]

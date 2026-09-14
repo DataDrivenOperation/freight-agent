@@ -1,0 +1,152 @@
+[
+  {
+    "load_id": "LOAD001",
+    "origin": "Atlanta, GA",
+    "destination": "Charlotte, NC",
+    "equipment_type": "dry_van",
+    "rate_usd": 1850,
+    "weight_lbs": 22000,
+    "pickup_date": "2026-09-15",
+    "hazmat_required": false
+  },
+  {
+    "load_id": "LOAD002",
+    "origin": "Dallas, TX",
+    "destination": "Houston, TX",
+    "equipment_type": "dry_van",
+    "rate_usd": 1300,
+    "weight_lbs": 15000,
+    "pickup_date": "2026-09-15",
+    "hazmat_required": false
+  },
+  {
+    "load_id": "LOAD003",
+    "origin": "Chicago, IL",
+    "destination": "Indianapolis, IN",
+    "equipment_type": "flatbed",
+    "rate_usd": 1600,
+    "weight_lbs": 38000,
+    "pickup_date": "2026-09-16",
+    "hazmat_required": false
+  },
+  {
+    "load_id": "LOAD004",
+    "origin": "Los Angeles, CA",
+    "destination": "Phoenix, AZ",
+    "equipment_type": "dry_van",
+    "rate_usd": 2600,
+    "weight_lbs": 28000,
+    "pickup_date": "2026-09-15",
+    "hazmat_required": true
+  },
+  {
+    "load_id": "LOAD005",
+    "origin": "Memphis, TN",
+    "destination": "Louisville, KY",
+    "equipment_type": "dry_van",
+    "rate_usd": 1750,
+    "weight_lbs": 24000,
+    "pickup_date": "2026-09-17",
+    "hazmat_required": false
+  },
+  {
+    "load_id": "LOAD006",
+    "origin": "Denver, CO",
+    "destination": "Chicago, IL",
+    "equipment_type": "reefer",
+    "rate_usd": 1450,
+    "weight_lbs": 32000,
+    "pickup_date": "2026-09-16",
+    "hazmat_required": false
+  },
+  {
+    "load_id": "LOAD007",
+    "origin": "Charlotte, NC",
+    "destination": "Jacksonville, FL",
+    "equipment_type": "flatbed",
+    "rate_usd": 2000,
+    "weight_lbs": 40000,
+    "pickup_date": "2026-09-18",
+    "hazmat_required": false
+  },
+  {
+    "load_id": "LOAD008",
+    "origin": "Columbus, OH",
+    "destination": "Louisville, KY",
+    "equipment_type": "dry_van",
+    "rate_usd": 1350,
+    "weight_lbs": 18000,
+    "pickup_date": "2026-09-16",
+    "hazmat_required": false
+  },
+  {
+    "load_id": "LOAD009",
+    "origin": "Phoenix, AZ",
+    "destination": "Los Angeles, CA",
+    "equipment_type": "dry_van",
+    "rate_usd": 2400,
+    "weight_lbs": 26000,
+    "pickup_date": "2026-09-17",
+    "hazmat_required": false
+  },
+  {
+    "load_id": "LOAD010",
+    "origin": "Nashville, TN",
+    "destination": "Memphis, TN",
+    "equipment_type": "flatbed",
+    "rate_usd": 1500,
+    "weight_lbs": 34000,
+    "pickup_date": "2026-09-15",
+    "hazmat_required": false
+  },
+  {
+    "load_id": "LOAD011",
+    "origin": "Charlotte, NC",
+    "destination": "Atlanta, GA",
+    "equipment_type": "dry_van",
+    "rate_usd": 2050,
+    "weight_lbs": 20000,
+    "pickup_date": "2026-09-19",
+    "hazmat_required": false
+  },
+  {
+    "load_id": "LOAD012",
+    "origin": "Houston, TX",
+    "destination": "Dallas, TX",
+    "equipment_type": "dry_van",
+    "rate_usd": 1550,
+    "weight_lbs": 16000,
+    "pickup_date": "2026-09-18",
+    "hazmat_required": false
+  },
+  {
+    "load_id": "LOAD013",
+    "origin": "Chicago, IL",
+    "destination": "Denver, CO",
+    "equipment_type": "reefer",
+    "rate_usd": 2800,
+    "weight_lbs": 30000,
+    "pickup_date": "2026-09-20",
+    "hazmat_required": false
+  },
+  {
+    "load_id": "LOAD014",
+    "origin": "Kansas City, MO",
+    "destination": "Denver, CO",
+    "equipment_type": "flatbed",
+    "rate_usd": 1900,
+    "weight_lbs": 42000,
+    "pickup_date": "2026-09-19",
+    "hazmat_required": false
+  },
+  {
+    "load_id": "LOAD015",
+    "origin": "Indianapolis, IN",
+    "destination": "Columbus, OH",
+    "equipment_type": "dry_van",
+    "rate_usd": 1200,
+    "weight_lbs": 14000,
+    "pickup_date": "2026-09-21",
+    "hazmat_required": false
+  }
+]

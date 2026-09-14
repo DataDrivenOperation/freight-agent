@@ -1,0 +1,12 @@
+# Anthropic SDK — used by shared/llm_client.py for all Claude calls
+anthropic==0.39.0
+# Pydantic v2 — schema validation for all agent inputs/outputs
+pydantic==2.9.2
+# python-dotenv — loads ANTHROPIC_API_KEY and other settings from .env
+python-dotenv==1.0.1
+# Rich — formatted CLI tables and console output for agent runs
+rich==13.9.2
+# pytest — test runner for all evals.py suites
+pytest==8.3.3
+# pytest-cov — coverage reporting for pytest runs
+pytest-cov==6.0.0
